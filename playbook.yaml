@@ -1,0 +1,31 @@
+---
+- hosts: all
+  become: true
+  
+
+  tasks:
+    - name: Install required packages
+      apt: 
+        name: ['bind9', 'dstat', 'vim', 'screen', 'fail2ban']
+        state: present
+        update_cache: yes
+
+    - name: Configure Network interfaces
+      template: src=templates/netplan.j2 dest=/etc/netplan/01-netcfg.yaml
+      register: new_network_config
+
+    - name: Apply networking config
+      command: netplan apply
+      when: new_network_config.changed
+
+    - name: Configure BIND - Options
+      template: src=templates/named.conf.options dest=/etc/bind/named.conf.options
+
+    - name: Configure BIND - Zones
+      template: src=templates/named.conf.local dest=/etc/bind/named.conf.local
+
+    - name: Configure BIND - Install Empty dd zones
+      template: src=templates/db.dd.empty dest=/etc/bind/db.dd.empty
+
+    - name: Configure BIND - Install Empty dr zones
+      template: src=templates/db.dr.empty dest=/etc/bind/db.dr.empty

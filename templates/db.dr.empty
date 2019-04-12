@@ -1,0 +1,14 @@
+; db.dr.empty
+;
+; Empty zone for DNAME redirection AS112 service.
+;
+$TTL    1W
+@  IN  SOA  blackhole.as112.arpa. noc.dns.icann.org. (
+			1       ; serial number
+			1W      ; refresh
+			1M      ; retry
+			1W      ; expire
+			1W )    ; negative caching TTL
+
+	NS     blackhole.as112.arpa.
+

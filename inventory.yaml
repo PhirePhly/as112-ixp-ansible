@@ -1,0 +1,14 @@
+---
+as112:
+  hosts:
+    kwftest1.lan.thelifeofkenneth.com
+  vars:
+    ixp_interface_name:
+    ixp_address_v4: 10.44.1.32
+    ixp_address_v6:
+    oob_interface_name:
+    oob_address_v4:
+    oob_gateway_v4:
+    oob_address_v6:
+    oob_gateway_v6:
+    oob_dns_servers: 8.8.8.8 1.1.1.1

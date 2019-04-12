@@ -1,0 +1,36 @@
+options {
+	directory "/var/cache/bind";
+
+	dnssec-validation auto;
+
+	auth-nxdomain no;    # conform to RFC1035
+	listen-on-v6 { any; };
+
+	recursion no;
+	allow-transfer { none;};
+
+	listen-on {
+		127.0.0.1;
+		10.44.1.134;
+		192.175.48.1;
+		192.175.48.6;
+		192.175.48.42;
+		192.31.196.1;
+	};
+
+	listen-on-v6 {
+		::1;
+		2620:4f:8000::1;
+		2620:4f:8000::6;
+		2620:4f:8000::42;
+		2001:4:112::1;
+	};
+};
+
+logging {
+	channel "querylog" {
+		file "/var/cache/bind/query.log" versions 2 size 500m;
+		print-time yes;
+	};
+	category queries { querylog; };
+};
