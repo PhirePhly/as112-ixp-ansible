@@ -1,0 +1,36 @@
+# Network interface configuration for AS112
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    lo:
+      match:
+        name: lo
+      addresses:
+        - 192.175.48.1/32
+        - 192.175.48.6/32
+        - 192.175.48.42/32
+        - 192.31.196.1/32
+        - 2620:4f:8000::1/128
+        - 2620:4f:8000::6/128
+        - 2620:4f:8000::42/128
+        - 2001:4:112::1/128
+    {{ oob_interface_name }}:
+      addresses:
+        - {{ oob_address_v4 }}
+        - {{ oob_address_v6 }}
+      gateway4: {{ oob_gateway_v4 }}
+      gateway6: {{ oob_gateway_v6 }}
+      nameservers:
+        addresses: {{ oob_dns_servers }}
+      dhcp4: no
+      dhcp6: no
+      accept-ra: no
+    {{ ixp_interface_name }}:
+      addresses:
+        - {{ ixp_address_v4 }}
+        - {{ ixp_address_v6 }}
+      dhcp4: no
+      dhcp6: no
+      accept-ra: no
+
