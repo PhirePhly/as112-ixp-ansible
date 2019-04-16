@@ -4,18 +4,20 @@ options {
 	dnssec-validation auto;
 
 	auth-nxdomain no;    # conform to RFC1035
-	listen-on-v6 { any; };
 
 	recursion no;
 	allow-transfer { none;};
 
+	server-id "{{ inventory_hostname }}";
+
 	listen-on {
 		127.0.0.1;
-		10.44.1.134;
 		192.175.48.1;
 		192.175.48.6;
 		192.175.48.42;
 		192.31.196.1;
+		{{ oob_address_v4 }};
+		{{ ixp_address_v4 }};
 	};
 
 	listen-on-v6 {
@@ -24,6 +26,8 @@ options {
 		2620:4f:8000::6;
 		2620:4f:8000::42;
 		2001:4:112::1;
+		{{ oob_address_v6 }};
+		{{ ixp_address_v6 }};
 	};
 };
 

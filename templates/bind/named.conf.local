@@ -1,25 +1,37 @@
 // AS112 Zones
 
-zone "10.in-addr.arpa"      { type master; file "/etc/bind/db.dd.empty"; };
+zone "10.in-addr.arpa"      { type master; file "/etc/bind/db.dd-empty"; };
  
-zone "16.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "17.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "18.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "19.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "20.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "21.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "22.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "23.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "24.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "25.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "26.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "27.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "28.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "29.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "30.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
-zone "31.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd.empty"; };
+zone "16.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "17.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "18.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "19.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "20.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "21.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "22.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "23.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "24.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "25.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "26.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "27.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "28.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "29.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "30.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
+zone "31.172.in-addr.arpa"  { type master; file "/etc/bind/db.dd-empty"; };
 
-zone "168.192.in-addr.arpa" { type master; file "/etc/bind/db.dd.empty"; };
+zone "168.192.in-addr.arpa" { type master; file "/etc/bind/db.dd-empty"; };
 
-zone "empty.as112.arpa" { type master; file "/etc/bind/db.dr.empty"; };
+zone "254.169.in-addr.arpa" { type master; file "/etc/bind/db.dd-empty"; };
+
+zone "empty.as112.arpa" { type master; file "/etc/bind/db.dr-empty"; };
+
+zone "hostname.as112.net" {
+  type master;
+  file "/etc/bind/db.hostname.as112.net";
+};
+
+zone "hostname.as112.arpa" {
+  type master;
+  file "/etc/bind/db.hostname.as112.arpa";
+};
 

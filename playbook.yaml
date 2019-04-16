@@ -11,7 +11,7 @@
         update_cache: yes
 
     - name: Configure Network interfaces
-      template: src=templates/netplan.j2 dest=/etc/netplan/01-netcfg.yaml
+      template: src=templates/netplan/netcfg.yaml dest=/etc/netplan/01-netcfg.yaml
       register: new_network_config
 
     - name: Apply networking config
@@ -19,13 +19,31 @@
       when: new_network_config.changed
 
     - name: Configure BIND - Options
-      template: src=templates/named.conf.options dest=/etc/bind/named.conf.options
+      template: src=templates/bind/named.conf.options dest=/etc/bind/named.conf.options
+      register: new_bind_config
 
     - name: Configure BIND - Zones
-      template: src=templates/named.conf.local dest=/etc/bind/named.conf.local
+      template: src=templates/bind/named.conf.local dest=/etc/bind/named.conf.local
+      register: new_bind_config
 
-    - name: Configure BIND - Install Empty dd zones
-      template: src=templates/db.dd.empty dest=/etc/bind/db.dd.empty
+    - name: Configure BIND - Install Empty Direct Delegation Zone File
+      template: src=templates/bind/db.dd-empty dest=/etc/bind/db.dd-empty
+      register: new_bind_config
 
-    - name: Configure BIND - Install Empty dr zones
-      template: src=templates/db.dr.empty dest=/etc/bind/db.dr.empty
+    - name: Configure BIND - Install Empty DNAME Redelegation Zone File
+      template: src=templates/bind/db.dr-empty dest=/etc/bind/db.dr-empty
+      register: new_bind_config
+
+    - name: Configure BIND - Install hostname.as112.net Zone
+      template: src=templates/bind/db.hostname.as112.net dest=/etc/bind/db.hostname.as112.net
+      register: new_bind_config
+
+    - name: Configure BIND - Install hostname.as112.arpa Zone
+      template: src=templates/bind/db.hostname.as112.arpa dest=/etc/bind/db.hostname.as112.arpa
+      register: new_bind_config
+
+    - name: Reloading BIND Service
+      service:
+        name: bind9
+        state: reloaded
+      when: new_bind_config.changed

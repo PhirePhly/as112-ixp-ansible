@@ -1,0 +1,13 @@
+$TTL    1W
+@       SOA     {{ inventory_hostname }}. {{ host_soa_rname }}. (
+		1               ; serial number
+		1W              ; refresh
+		1M              ; retry
+		1W              ; expire
+		1W )            ; negative caching TTL
+;
+	NS	blackhole.as112.arpa.
+;
+	TXT     "{{ host_facility_name }}" "{{ host_city_country }}"
+	TXT     "See http://www.as112.net/ for more information."
+	TXT     "Unique IP: {{ oob_address_v4 }}, {{ oob_address_v6 }}"

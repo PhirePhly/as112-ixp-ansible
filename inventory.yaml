@@ -3,6 +3,9 @@ as112:
   hosts:
     kwftest1.lan.thelifeofkenneth.com
   vars:
+    host_soa_rname:
+    host_facility_name:
+    host_city_country:
     oob_interface_name:
     oob_address_v4:
     oob_gateway_v4:
