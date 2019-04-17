@@ -23,12 +23,17 @@ zone "168.192.in-addr.arpa" { type master; file "/etc/bind/db.dd-empty"; };
 
 zone "254.169.in-addr.arpa" { type master; file "/etc/bind/db.dd-empty"; };
 
-zone "empty.as112.arpa" { type master; file "/etc/bind/db.dr-empty"; };
+zone "home.arpa" { type master; file "/etc/bind/db.dd-empty"; };
 
 zone "hostname.as112.net" {
   type master;
   file "/etc/bind/db.hostname.as112.net";
 };
+
+
+// RFC7535 Support for DNAME Redirection
+
+zone "empty.as112.arpa" { type master; file "/etc/bind/db.dr-empty"; };
 
 zone "hostname.as112.arpa" {
   type master;
