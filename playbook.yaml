@@ -6,7 +6,7 @@
   tasks:
     - name: Install required packages
       apt: 
-        name: ['bind9', 'dstat', 'vim', 'screen', 'fail2ban']
+        name: ['bind9', 'quagga', 'dstat', 'vim', 'screen', 'fail2ban']
         state: present
         update_cache: yes
 
@@ -47,3 +47,24 @@
         name: bind9
         state: reloaded
       when: new_bind_config.changed
+
+    - name: Write Quagga Config File
+      template: src=templates/quagga/zebra.conf dest=/etc/quagga/zebra.conf
+      register: new_quagga_config
+
+    - name: Write Quagga BGPd Config File
+      template: src=templates/quagga/bgpd.conf dest=/etc/quagga/bgpd.conf
+      register: new_quagga_config
+
+    - name: Restarting Zebra Service
+      service:
+        name: zebra
+        state: restarted
+      when: new_quagga_config.changed
+
+    - name: Restarting BGPd Service
+      service:
+        name: bgpd
+        state: restarted
+      when: new_quagga_config.changed
+

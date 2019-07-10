@@ -17,19 +17,19 @@ network:
         - 2001:4:112::1/128
     {{ oob_interface_name }}:
       addresses:
-        - {{ oob_address_v4 }}
-        - {{ oob_address_v6 }}
+        - {{ oob_address_v4 }}/ {{ oob_address_v4_netmask }}
+        - {{ oob_address_v6 }}/64
       gateway4: {{ oob_gateway_v4 }}
       gateway6: {{ oob_gateway_v6 }}
       nameservers:
-        addresses: {{ oob_dns_servers }}
+        addresses: {{ oob_dns_servers | to_yaml }}
       dhcp4: no
       dhcp6: no
       accept-ra: no
     {{ ixp_interface_name }}:
       addresses:
-        - {{ ixp_address_v4 }}
-        - {{ ixp_address_v6 }}
+        - {{ ixp_address_v4 }}/ {{ ixp_address_v4_netmask }}
+        - {{ ixp_address_v6 }}/64
       dhcp4: no
       dhcp6: no
       accept-ra: no

@@ -1,0 +1,25 @@
+---
+as112:
+  hosts:
+    hostname.example.net
+  vars:
+    host_soa_rname: noc.example.net
+    host_facility_name: Example Facility Name
+    host_city_country: Nowhere, USA
+    oob_interface_name: ens160
+    oob_address_v4: 192.0.2.10
+    oob_address_v4_netmask: 26
+    oob_gateway_v4: 192.0.2.1
+    oob_address_v6: 2001:DB8:0:1::10
+    oob_gateway_v6: 2001:DB8:0:1::1
+    oob_dns_servers: ['8.8.4.4', '1.0.0.1', '2001:4860:4860::8888', '2606:4700:4700::1111']
+    ixp_interface_name: ens192
+    ixp_address_v4: 198.51.100.250
+    ixp_address_v4_netmask: 24
+    ixp_address_v6: 2001:DB8:9999:1::250
+    bgp_rs1_address_v4: 198.51.100.253
+    bgp_rs1_address_v6: 2001:DB8:9999:1::253
+    bgp_rs1_asn: 64500
+    bgp_rs2_address_v4: 198.51.100.254
+    bgp_rs2_address_v6: 2001:DB8:9999:1::254
+    bgp_rs2_asn: 64500
